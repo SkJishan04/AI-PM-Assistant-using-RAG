@@ -14,3 +14,44 @@ _book
 *.epub
 *.mobi
 *.pdf
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
+
+# SQLite
+*.db
+*.sqlite3
+
+# Environment files
+.env
+
+# pytest
+.pytest_cache/
+
+# mypy
+.mypy_cache/
+
+# Ruff
+.ruff_cache/
+
+# Coverage
+.coverage
+htmlcov/
+
+# Build
+build/
+dist/
+*.egg-info/
