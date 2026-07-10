@@ -10,3 +10,14 @@ collection = client.get_or_create_collection(
     name=COLLECTION_NAME,
     embedding_function=embedding_function,
 )
+
+def clear_collection() -> str:
+    """Deletes all indexed chunks so you can start fresh."""
+    existing = collection.get()
+    ids = existing.get("ids", [])
+
+    if not ids:
+        return "Index is already empty."
+
+    collection.delete(ids=ids)
+    return f"Cleared {len(ids)} chunks. Index is now empty."
