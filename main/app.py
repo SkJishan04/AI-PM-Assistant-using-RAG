@@ -14,6 +14,7 @@ with gr.Blocks() as demo:
     )
     index_button = gr.Button("Index documents")
     index_status = gr.Textbox(label="Index status")
+    clear_button = gr.Button("Clear index")
 
     question = gr.Textbox(label="Question", placeholder="What risks are mentioned in the PRD?")
     answer = gr.Textbox(label="Answer", lines=12)
