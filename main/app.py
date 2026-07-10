@@ -1,5 +1,5 @@
 import gradio as gr
-
+from vector_store import clear_collection
 from indexer import index_documents
 from pipeline import answer_question
 
