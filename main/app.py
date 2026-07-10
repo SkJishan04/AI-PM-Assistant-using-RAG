@@ -21,6 +21,7 @@ with gr.Blocks() as demo:
     ask_button = gr.Button("Ask")
 
     index_button.click(index_documents, inputs=files, outputs=index_status)
+    clear_button.click(clear_collection, inputs=None, outputs=index_status)
     ask_button.click(answer_question, inputs=question, outputs=answer)
 
 if __name__ == "__main__":
