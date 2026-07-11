@@ -63,3 +63,21 @@ User question → Embed question → Retrieve top-K similar chunks → Construct
 
 ## 4. Project Structure
 
+AI-PM-Assistant-using-RAG/
+├── main/
+│   ├── app.py            # Gradio UI — upload, index, ask, display answer
+│   ├── config.py         # Central configuration (chunk size, top-k, model names)
+│   ├── file_loader.py    # Document parsing (txt/md/csv/pdf/docx → plain text)
+│   ├── chunker.py        # Overlapping text chunking
+│   ├── vector_store.py   # ChromaDB client, collection, and clear_collection()
+│   ├── indexer.py        # Orchestrates: read file → chunk → embed → store
+│   ├── retriever.py      # Orchestrates: question → embed → query → top-K context
+│   ├── llm.py            # Prompt construction + LLM API call (OpenAI/Gemini)
+│   └── pipeline.py       # Full query flow: question → retrieve → prompt → answer
+├── demo_document.txt      # Sample PRD + meeting notes + Jira export for demoing
+├── demo_questions.txt     # Curated question set covering retrieval, summarization, and grounding checks
+├── assets/
+│   ├── architecture.png   # System architecture diagram
+│   └── ui_demo.png        # UI screenshot
+└── README.md
+
