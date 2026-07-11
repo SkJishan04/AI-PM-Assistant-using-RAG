@@ -32,3 +32,6 @@ The system consists of two pipelines that share a common vector store:
 
 Upload document → Extract raw text → Chunk text → Embed chunks → Store in ChromaDB
 
+**Query Pipeline:**
+
+User question → Embed question → Retrieve top-K similar chunks → Construct grounded prompt → Call LLM → Return answer + sources
