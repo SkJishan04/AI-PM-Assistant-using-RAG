@@ -35,3 +35,31 @@ Upload document → Extract raw text → Chunk text → Embed chunks → Store i
 **Query Pipeline:**
 
 User question → Embed question → Retrieve top-K similar chunks → Construct grounded prompt → Call LLM → Return answer + sources
+
+### 2.1 Design Rationale
+
+| Decision | Rationale |
+|---|---|
+| Chunking with overlap | Prevents semantically meaningful sentences from being split across chunk boundaries and losing context |
+| Local embedding model (`all-MiniLM-L6-v2`) | No network dependency for the embedding step; fast enough for interactive use; small enough to run on CPU |
+| ChromaDB (persistent, local) | Zero-ops vector store — no external database to provision, data persists between sessions |
+| Explicit "answer only from context" instruction | Reduces hallucination risk by constraining the LLM's generation to retrieved evidence |
+| Modular file structure | Each pipeline stage (loading, chunking, embedding, retrieval, generation) is independently testable and swappable |
+
+---
+
+## 3. Tech Stack
+
+| Layer | Technology |
+|---|---|
+| UI | [Gradio](https://www.gradio.app/) |
+| Vector Database | [ChromaDB](https://www.trychroma.com/) (persistent local client) |
+| Embedding Model | `sentence-transformers/all-MiniLM-L6-v2` |
+| LLM Provider | OpenAI (`gpt-4o-mini` default) or Google Gemini (`gemini-1.5-flash` default) |
+| Document Parsing | `pypdf` (PDF), `python-docx` (DOCX), native text parsing (TXT/MD/CSV) |
+| Language | Python 3.10+ |
+
+---
+
+## 4. Project Structure
+
