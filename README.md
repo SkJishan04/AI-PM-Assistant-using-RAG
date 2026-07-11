@@ -81,3 +81,128 @@ AI-PM-Assistant-using-RAG/
 │   └── ui_demo.png        # UI screenshot
 └── README.md
 
+Each file has a single, well-defined responsibility — this separation makes it straightforward to swap components (e.g., replace ChromaDB with another vector store, or add a new LLM provider) without touching unrelated code.
+
+---
+
+## 5. Installation & Setup
+
+### 5.1 Prerequisites
+- Python 3.10 or higher
+- (Optional) An OpenAI or Google Gemini API key for answer generation
+
+### 5.2 Steps
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/<your-username>/AI-PM-Assistant-using-RAG.git
+cd AI-PM-Assistant-using-RAG/main
+
+# 2. Create and activate a virtual environment
+python -m venv venv
+source venv/bin/activate        # Windows: venv\Scripts\activate
+
+# 3. Install dependencies
+pip install -r requirements.txt
+
+# 4. (Optional) Set an LLM API key
+export OPENAI_API_KEY="sk-..."
+# or
+export GEMINI_API_KEY="..."
+
+# 5. Launch the app
+python app.py
+```
+
+The app will be available locally at `http://127.0.0.1:7860`.
+
+> **Note:** If no API key is set, the system falls back to displaying the raw retrieved context instead of a generated answer — retrieval still works fully offline; only the generation step requires an API key.
+
+---
+
+## 6. Usage & Demo
+
+![UI Demo](assets/ui_demo.png)
+
+*Figure 2: The Gradio interface — document upload and indexing controls (top), question input and generated answer with source attribution (bottom).*
+
+### 6.1 Workflow
+1. Upload one or more documents (`.txt`, `.md`, `.csv`, `.pdf`, `.docx`) via the **Documents** panel.
+2. Click **Index documents** — the app reports how many chunks were created and stored.
+3. Enter a natural-language question in the **Question** field.
+4. Click **Ask** — the system retrieves relevant chunks, constructs a grounded prompt, and returns an answer with a list of source chunks it drew from.
+5. Click **Clear index** at any point to wipe the vector store and start fresh.
+
+### 6.2 Try It Yourself
+
+A ready-made demo is included:
+1. Upload `demo_document.txt` (a sample PRD combined with meeting notes and a Jira export) and index it.
+2. Ask any question from `demo_questions.txt`, which is organized into four categories:
+   - **Simple fact lookup** — tests basic retrieval accuracy
+   - **Summarization** — tests synthesis across a document section
+   - **Multi-fact reasoning** — tests connecting information across sections
+   - **Grounding checks** — questions with no answer in the document, to verify the system says "I don't know" instead of hallucinating
+
+---
+
+## 7. Configuration
+
+All tunable parameters live in `config.py`:
+
+| Parameter | Default | Description |
+|---|---|---|
+| `CHUNK_SIZE` | 900 | Maximum characters per chunk |
+| `CHUNK_OVERLAP` | 150 | Character overlap between consecutive chunks, to preserve context across boundaries |
+| `TOP_K` | 4 | Number of chunks retrieved per query |
+| `EMBEDDING_MODEL` | `all-MiniLM-L6-v2` | Sentence-transformers model used to generate embeddings |
+
+These defaults were chosen as a reasonable starting point for short-to-medium PM documents (PRDs, meeting notes); larger source documents may benefit from a larger `CHUNK_SIZE` or higher `TOP_K`.
+
+---
+
+## 8. Evaluation
+
+Manual evaluation was performed using the included demo document and question set (`demo_questions.txt`), covering three failure modes RAG systems commonly exhibit:
+
+1. **Retrieval failure** (relevant chunk not retrieved) — mitigated by chunk overlap and `TOP_K` tuning.
+2. **Hallucination** (answer not grounded in retrieved context) — mitigated by explicit prompt instruction to answer "only from the context below," with an instruction to state uncertainty otherwise.
+3. **Silent failure on out-of-scope questions** — verified the system correctly responds with an "I don't know" style answer for questions with no support in the source document, rather than fabricating a plausible-sounding response.
+
+All three cases were validated against the demo document prior to release.
+
+---
+
+## 9. Limitations
+
+- **No OCR support** — scanned/image-based PDFs will return empty or garbled text, since extraction relies on embedded text layers.
+- **No re-ranking step** — retrieval relies solely on embedding similarity; a cross-encoder re-ranking stage could improve precision for ambiguous queries.
+- **Single-turn Q&A** — the system does not currently maintain conversational history across questions.
+- **No automated evaluation suite** — evaluation is currently manual; no quantitative retrieval metrics (e.g., recall@k) are tracked yet.
+
+---
+
+## 10. Roadmap
+
+- [ ] Add OCR fallback for scanned PDFs
+- [ ] Add conversational memory across turns
+- [ ] Add automated retrieval evaluation (recall@k on a labeled question set)
+- [ ] Deploy to Hugging Face Spaces
+- [ ] Add a cross-encoder re-ranking step for higher-precision retrieval
+
+---
+
+## 11. Contributing
+
+Issues and pull requests are welcome. Please open an issue describing the proposed change before submitting a PR for anything beyond a minor fix.
+
+---
+
+## 12. License
+
+See [LICENSE](LICENSE).
+
+---
+
+## Acknowledgments
+
+Built using [Gradio](https://www.gradio.app/), [ChromaDB](https://www.trychroma.com/), and [Sentence-Transformers](https://www.sbert.net/).
