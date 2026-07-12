@@ -1,0 +1,30 @@
+Demo questions for AI PM Assistant
+
+Upload demo_document.txt, click "Index documents", then try asking these questions.
+
+--- Simple fact lookup ---
+1. What is the default notification lead time?
+2. What are the customization options for notification lead time?
+3. Who is the assignee for TASK-104?
+
+--- Summarization across a section ---
+4. What risks are mentioned in this PRD?
+5. What were the main discussion points in the design review meeting?
+6. What is out of scope for v1?
+
+--- Multi-fact / requires connecting two parts of the doc ---
+7. What action items came out of the design review, and who owns each one?
+8. Which Jira tickets are blocked, and why?
+9. What are the success metrics, and how do they relate to the goals?
+
+--- Reasoning slightly beyond a single sentence ---
+10. Why might the personalized lead-time suggestion feature be risky?
+11. What engineering risk was raised around cross-device sync, and how was it resolved?
+
+--- Should say "I don't know" (tests grounding, not hallucination) ---
+12. What is the budget for this project?
+13. Who is the engineering manager overseeing this team?
+14. What programming language is the app built in?
+
+Tip: questions 12-14 are intentionally not answerable from the document.
+A good answer should say it doesn't know rather than guessing.
