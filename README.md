@@ -63,6 +63,7 @@ User question → Embed question → Retrieve top-K similar chunks → Construct
 
 ## 4. Project Structure
 
+```
 AI-PM-Assistant-using-RAG/
 ├── main/
 │   ├── app.py            # Gradio UI — upload, index, ask, display answer
@@ -76,12 +77,12 @@ AI-PM-Assistant-using-RAG/
 │   └── pipeline.py       # Full query flow: question → retrieve → prompt → answer
 ├── demo_document.txt      # Sample PRD + meeting notes + Jira export for demoing
 ├── demo_questions.txt     # Curated question set covering retrieval, summarization, and grounding checks
+├── DEMO.md                # Expected answers and walkthrough for the demo questions
 ├── assets/
 │   ├── architecture.png   # System architecture diagram
 │   └── ui_demo.png        # UI screenshot
 └── README.md
-
-Each file has a single, well-defined responsibility — this separation makes it straightforward to swap components (e.g., replace ChromaDB with another vector store, or add a new LLM provider) without touching unrelated code.
+```
 
 ---
 
