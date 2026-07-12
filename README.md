@@ -143,6 +143,7 @@ A ready-made demo is included:
    - **Summarization** — tests synthesis across a document section
    - **Multi-fact reasoning** — tests connecting information across sections
    - **Grounding checks** — questions with no answer in the document, to verify the system says "I don't know" instead of hallucinating
+3. See [DEMO.md](DEMO.md) for expected answers and what each question is designed to test
 
 ---
 
