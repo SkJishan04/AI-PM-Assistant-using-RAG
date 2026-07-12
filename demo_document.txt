@@ -1,0 +1,64 @@
+Product Requirements Document: Smart Task Reminder
+
+1. Overview
+We are adding a Smart Task Reminder feature to the mobile productivity app. This lets users set a reminder date and time for any task, and the app sends a push notification before it is due. The feature also learns from user behavior to suggest better reminder times over time.
+
+2. Goals
+- Reduce missed deadlines for users
+- Increase daily active usage through timely, relevant notifications
+- Keep setup simple, with smart defaults that require no configuration
+
+3. Target Users
+Busy professionals and students who manage multiple tasks daily and often forget deadlines. Secondary audience: freelancers juggling multiple clients with overlapping due dates.
+
+4. Key Requirements
+1. Users can set a reminder date and time when creating or editing a task.
+2. Users receive a push notification 30 minutes before the reminder time by default.
+3. Users can customize the notification lead time in Settings (options: 10 minutes, 30 minutes, 1 hour, 1 day).
+4. Reminders sync across all devices logged into the same account.
+5. If a task is marked complete before the reminder time, no notification is sent.
+6. After 2 weeks of usage data, the app suggests a personalized default lead time based on how early or late the user typically completes tasks.
+
+5. Risks
+- Notification delivery may be delayed on some Android devices due to battery optimization settings.
+- Users may disable notifications at the OS level, making reminders invisible without an in-app fallback.
+- Timezone handling across devices could cause reminders to fire at the wrong local time if not implemented carefully.
+- The personalized suggestion model could feel intrusive if it changes reminder times without clear explanation.
+
+6. Success Metrics
+- 25% reduction in tasks marked "overdue" within 60 days of launch
+- At least 40% of active users set a reminder within their first week of using the app
+- At least 15% of eligible users accept a personalized lead-time suggestion within 30 days
+
+7. Timeline
+- Design review: Week 1
+- Engineering build: Weeks 2-4
+- QA and beta testing: Week 5
+- Launch: Week 6
+
+8. Meeting Notes - Design Review (Week 1)
+Attendees: Priya (PM), Alex (Design), Sam (Engineering Lead), Jordan (QA)
+
+Priya opened by walking through the four key requirements. Alex raised a concern that a 30-minute default lead time might feel arbitrary to users who have very short tasks, like a 15-minute call. The team agreed to keep 30 minutes as the default but make the customization option more visible in onboarding, not buried in Settings.
+
+Sam flagged that syncing reminders across devices will require a new background sync job, and estimated this alone could take 3-4 extra engineering days beyond the original estimate. The team agreed to timebox this to 4 days and de-scope real-time sync to near-real-time (within 5 minutes) if needed to hit the Week 4 deadline.
+
+Jordan asked about test coverage for timezone edge cases, specifically daylight saving time transitions. The team agreed QA would write a dedicated test suite for timezone handling during Week 5.
+
+Action items:
+- Alex to update onboarding flow mockups by end of Week 1
+- Sam to scope the background sync job by Monday of Week 2
+- Jordan to draft the timezone test plan by Week 3
+
+9. Jira Export - Open Issues
+TASK-101: Implement reminder date/time picker in task creation flow. Status: In Progress. Assignee: Sam.
+TASK-102: Build push notification service integration. Status: To Do. Assignee: Unassigned.
+TASK-103: Add lead-time customization to Settings screen. Status: To Do. Assignee: Alex.
+TASK-104: Cross-device reminder sync via background job. Status: Blocked. Assignee: Sam. Blocked by: infrastructure team needs to provision a new queue.
+TASK-105: Personalized lead-time suggestion model (v1, rule-based). Status: Backlog. Assignee: Unassigned.
+TASK-106: Timezone and DST test suite. Status: To Do. Assignee: Jordan.
+
+10. Out of Scope for v1
+- Location-based reminders (e.g., "remind me when I get to the office")
+- Voice-activated reminder creation
+- Team-shared reminders visible to multiple users
