@@ -137,7 +137,7 @@ The app will be available locally at `http://127.0.0.1:7860`.
 ### 6.2 Try It Yourself
 
 A ready-made demo is included:
-1. Upload `demo_document.txt` (a sample PRD combined with meeting notes and a Jira export) and index it.
+1. Upload [`demo_document.txt`](demo_document.txt) (a sample PRD combined with meeting notes and a Jira export) and index it.
 2. Ask any question from `demo_questions.txt`, which is organized into four categories:
    - **Simple fact lookup** — tests basic retrieval accuracy
    - **Summarization** — tests synthesis across a document section
