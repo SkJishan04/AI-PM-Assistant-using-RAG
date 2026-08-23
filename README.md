@@ -34,3 +34,26 @@
 16. [License](#16-license)
 
 ---
+
+## 1. Overview
+
+Product Managers work across a fragmented set of unstructured documents — PRDs, meeting notes, and issue-tracker exports. This project is a lightweight **Retrieval-Augmented Generation (RAG)** system that indexes those documents into a local vector store, retrieves the most relevant passages for a natural-language question, and generates a grounded, source-cited answer via an LLM.
+
+The system is built around three principles:
+
+| Principle | Meaning |
+|---|---|
+| **Modularity** | Each pipeline stage is an isolated, independently testable unit |
+| **Groundedness** | Answers are constrained to retrieved context; the system explicitly says "not found" when the answer isn't present |
+| **Local-first** | Embeddings and vector storage run entirely on-device; the LLM call is the only external dependency |
+
+---
+
+## 2. Problem & Motivation
+
+Answering a question like *"Which tickets are blocked, and why?"* currently means manually re-reading multiple documents — slow, error-prone, and hard to scale across a growing document set.
+
+Rather than fine-tuning a model (expensive, static) or relying on an LLM's parametric knowledge (prone to hallucination, blind to private team documents), this project uses **RAG**: relevant text is retrieved from a vector database at query time and injected into the LLM's context window as grounding evidence, with an explicit instruction to answer only from that evidence.
+
+---
+
