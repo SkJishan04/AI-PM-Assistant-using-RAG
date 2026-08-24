@@ -57,3 +57,36 @@ Rather than fine-tuning a model (expensive, static) or relying on an LLM's param
 
 ---
 
+## 3. Features
+
+- 🔍 **Semantic search** over uploaded documents using vector embeddings
+- 📄 **Multi-format ingestion** — TXT, MD, CSV, PDF, DOCX
+- 🤖 **Grounded LLM answers** with explicit source-chunk attribution
+- 🧩 **Modular pipeline** — swap any stage independently (embedding model, LLM provider, vector store)
+- 🧹 **Index management** — clear/reset the vector store from the UI
+- 🚫 **Hallucination-resistant** — verified to correctly abstain when the answer isn't in the document
+- 🐳 **Containerized** for reproducible deployment
+
+---
+
+## 4. Workflow
+
+```mermaid
+flowchart TD
+    A[📄 Upload Document] --> B[Extract Raw Text]
+    B --> C[Chunk Text with Overlap]
+    C --> D[Generate Embeddings]
+    D --> E[(ChromaDB Vector Store)]
+
+    Q[❓ User Question] --> F[Embed Question]
+    F --> G[Retrieve Top-K Similar Chunks]
+    E --> G
+    G --> H[Construct Grounded Prompt]
+    H --> I[Call LLM]
+    I --> J[✅ Answer + Source Chunks]
+```
+
+<!-- 📸 Placeholder: Optional custom workflow illustration -->
+<!-- assets/workflow_custom.png -->
+
+---
