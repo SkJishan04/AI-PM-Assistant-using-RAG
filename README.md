@@ -184,3 +184,21 @@ AI-PM-Assistant-using-RAG/
 <!-- assets/ui_demo.png -->
 
 ---
+
+## 9. Results & Evaluation
+
+Evaluated using a 14-question test set spanning four categories:
+
+| Category | Purpose | Result |
+|---|---|---|
+| Simple fact lookup | Basic retrieval accuracy | ✅ Passed |
+| Summarization | Synthesis across a section | ✅ Passed |
+| Multi-fact reasoning | Connecting facts across sections | ✅ Passed |
+| Grounding checks (no answer in doc) | Hallucination resistance | ✅ 100% correct abstention |
+
+**Failure modes explicitly tested:**
+1. Retrieval failure — mitigated via chunk overlap + `TOP_K` tuning
+2. Hallucination — mitigated via explicit "answer only from context" prompt
+3. Silent failure on out-of-scope questions — verified correct "not found" responses
+
+---
