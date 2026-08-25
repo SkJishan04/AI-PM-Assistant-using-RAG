@@ -238,3 +238,17 @@ App runs at `http://127.0.0.1:7860`. Without an API key, the system falls back t
 | `EMBEDDING_MODEL` | `all-MiniLM-L6-v2` | Embedding model used |
 
 ---
+
+## 11. Testing
+
+A ready-made demo validates the full pipeline end to end:
+
+1. Upload [`demo_document.txt`](demo_document.txt)
+2. Ask questions from [`demo_questions.txt`](demo_questions.txt)
+3. Compare against expected answers in [`DEMO.md`](DEMO.md)
+
+Covers: fact retrieval, summarization, multi-fact reasoning, and hallucination/grounding checks — see [Results & Evaluation](#9-results--evaluation).
+
+> Automated unit tests are not yet implemented — see [Future Improvements](#15-future-improvements).
+
+---
