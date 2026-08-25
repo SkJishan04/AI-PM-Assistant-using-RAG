@@ -202,3 +202,39 @@ Evaluated using a 14-question test set spanning four categories:
 3. Silent failure on out-of-scope questions — verified correct "not found" responses
 
 ---
+
+## 10. Setup & Installation
+
+### Prerequisites
+- Python 3.10+
+- (Optional) OpenAI or Gemini API key
+
+### Steps
+
+```bash
+git clone https://github.com/<your-username>/AI-PM-Assistant-using-RAG.git
+cd AI-PM-Assistant-using-RAG/main
+
+python -m venv venv
+source venv/bin/activate        # Windows: venv\Scripts\activate
+
+pip install -r requirements.txt
+
+export OPENAI_API_KEY="sk-..."   # optional
+export GEMINI_API_KEY="..."      # optional
+
+python app.py
+```
+
+App runs at `http://127.0.0.1:7860`. Without an API key, the system falls back to displaying raw retrieved context.
+
+### Configuration (`config.py`)
+
+| Parameter | Default | Description |
+|---|---|---|
+| `CHUNK_SIZE` | 900 | Max characters per chunk |
+| `CHUNK_OVERLAP` | 150 | Overlap between chunks |
+| `TOP_K` | 4 | Chunks retrieved per query |
+| `EMBEDDING_MODEL` | `all-MiniLM-L6-v2` | Embedding model used |
+
+---
