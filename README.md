@@ -124,3 +124,44 @@ flowchart LR
 | Modular file structure | Each stage independently testable and swappable |
 
 ---
+
+## 6. Tech Stack
+
+| Layer | Technology |
+|---|---|
+| UI | [Gradio](https://www.gradio.app/) |
+| Vector Database | [ChromaDB](https://www.trychroma.com/) |
+| Embedding Model | `sentence-transformers/all-MiniLM-L6-v2` |
+| LLM Provider | OpenAI (`gpt-4o-mini`) / Google Gemini (`gemini-1.5-flash`) |
+| Document Parsing | `pypdf`, `python-docx` |
+| Language | Python 3.10+ |
+| Containerization | Docker |
+
+---
+
+## 7. Project Structure
+
+```
+AI-PM-Assistant-using-RAG/
+├── main/
+│ ├── app.py # Gradio UI
+│ ├── config.py # Central configuration
+│ ├── file_loader.py # Document parsing
+│ ├── chunker.py # Overlapping text chunking
+│ ├── vector_store.py # ChromaDB client + collection management
+│ ├── indexer.py # Read → chunk → embed → store
+│ ├── retriever.py # Question → embed → query → context
+│ ├── llm.py # Prompt construction + LLM call
+│ └── pipeline.py # Full query flow orchestration
+├── demo_document.txt
+├── demo_questions.txt
+├── DEMO.md
+├── Dockerfile
+├── requirements.txt
+├── assets/
+│ ├── architecture.png # 📸 placeholder
+│ └── ui_demo.png # 📸 placeholder
+└── README.md
+```
+
+---
