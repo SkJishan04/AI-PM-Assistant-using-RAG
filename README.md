@@ -165,3 +165,22 @@ AI-PM-Assistant-using-RAG/
 ```
 
 ---
+
+## 8. Examples
+
+**Sample interaction:**
+
+> **Uploaded:** PRD + meeting notes + Jira export
+> **Question:** *"Which tickets are blocked, and why?"*
+> **Answer:** "TASK-104 is blocked, waiting on the infrastructure team to provision a new queue."
+> **Sources:** `demo_document.txt – chunk 4`
+
+**Grounding check example:**
+
+> **Question:** *"What is the budget for this project?"*
+> **Answer:** "Not found in the provided context."
+
+<!-- 📸 Placeholder: UI screenshot showing question + answer + sources -->
+<!-- assets/ui_demo.png -->
+
+---
