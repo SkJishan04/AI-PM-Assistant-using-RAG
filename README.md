@@ -90,3 +90,37 @@ flowchart TD
 <!-- assets/workflow_custom.png -->
 
 ---
+
+## 5. Architecture
+
+```mermaid
+flowchart LR
+    subgraph Indexing Pipeline
+        A1[file_loader.py] --> A2[chunker.py]
+        A2 --> A3[vector_store.py]
+    end
+
+    subgraph Query Pipeline
+        B1[retriever.py] --> B2[llm.py]
+    end
+
+    A3 <--> B1
+    B2 --> B3[pipeline.py]
+    B3 --> C[app.py - Gradio UI]
+    C --> A1
+```
+
+<!-- 📸 Placeholder: Custom architecture diagram -->
+<!-- assets/architecture.png -->
+
+### Design Rationale
+
+| Decision | Rationale |
+|---|---|
+| Chunking with overlap | Prevents meaningful sentences from being split across chunk boundaries |
+| Local embedding model (`all-MiniLM-L6-v2`) | No network dependency; fast on CPU |
+| ChromaDB (persistent, local) | Zero-ops vector store, persists between sessions |
+| "Answer only from context" prompt constraint | Reduces hallucination risk |
+| Modular file structure | Each stage independently testable and swappable |
+
+---
