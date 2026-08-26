@@ -283,3 +283,33 @@ flowchart LR
 > Status: not yet implemented — tracked in [Future Improvements](#15-future-improvements).
 
 ---
+
+## 14. Limitations
+
+- No OCR support for scanned/image-based PDFs
+- No re-ranking step (relies solely on embedding similarity)
+- Single-turn Q&A — no conversational memory across questions
+- No automated evaluation suite (recall@k not yet tracked)
+
+---
+
+## 15. Future Improvements
+
+- [ ] Add OCR fallback for scanned PDFs
+- [ ] Add conversational memory across turns
+- [ ] Add automated retrieval evaluation (recall@k)
+- [ ] Deploy live demo to Hugging Face Spaces
+- [ ] Add cross-encoder re-ranking for higher-precision retrieval
+- [ ] Add GitHub Actions CI/CD pipeline
+
+---
+
+## 16. License
+
+See [LICENSE](LICENSE).
+
+---
+
+## Acknowledgments
+
+Built using [Gradio](https://www.gradio.app/), [ChromaDB](https://www.trychroma.com/), and [Sentence-Transformers](https://www.sbert.net/).
