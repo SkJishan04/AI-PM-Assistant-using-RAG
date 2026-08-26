@@ -252,3 +252,34 @@ Covers: fact retrieval, summarization, multi-fact reasoning, and hallucination/g
 > Automated unit tests are not yet implemented — see [Future Improvements](#15-future-improvements).
 
 ---
+
+## 12. Docker
+
+```bash
+# Build the image
+docker build -t ai-pm-assistant .
+
+# Run the container
+docker run -p 7860:7860 \
+  -e OPENAI_API_KEY="sk-..." \
+  ai-pm-assistant
+```
+
+App available at `http://localhost:7860`.
+
+---
+
+## 13. CI/CD
+
+Planned via GitHub Actions:
+
+```mermaid
+flowchart LR
+    A[Push to main] --> B[Lint + Test]
+    B --> C[Build Docker Image]
+    C --> D[Deploy to Hugging Face Spaces]
+```
+
+> Status: not yet implemented — tracked in [Future Improvements](#15-future-improvements).
+
+---
