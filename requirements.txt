@@ -1,7 +1,9 @@
-gradio 
-chromadb 
-sentence-transformers 
-pypdf 
-python-docx 
-openai 
+gradio
+chromadb
+sentence-transformers
+pypdf
+python-docx
+openai
 google-generativeai
+pytesseract
+pdf2image
