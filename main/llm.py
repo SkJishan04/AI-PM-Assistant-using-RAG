@@ -1,18 +1,33 @@
 import os
 
+from config import MAX_HISTORY_TURNS
 
-def build_prompt(question: str, context: str) -> str:
+
+def build_prompt(question: str, context: str, history: list | None = None) -> str:
+    history_text = ""
+    if history:
+        recent_turns = history[-MAX_HISTORY_TURNS:]
+        formatted_turns = "\n".join(
+            f"Q: {past_question}\nA: {past_answer}" for past_question, past_answer in recent_turns
+        )
+        history_text = (
+            "Conversation so far (use this only to understand what the current "
+            "question refers to, e.g. pronouns like 'it' or 'that' — not as a source of facts):\n"
+            f"{formatted_turns}\n\n"
+        )
+
     return (
         "Answer the question using only the context below. "
         "If the answer is not in the context, say you do not know.\n\n"
+        f"{history_text}"
         f"Context:\n{context}\n\n"
         f"Question: {question}\n\n"
         "Answer:"
     )
 
 
-def call_llm(question: str, context: str) -> str:
-    prompt = build_prompt(question, context)
+def call_llm(question: str, context: str, history: list | None = None) -> str:
+    prompt = build_prompt(question, context, history=history)
 
     if os.getenv("OPENAI_API_KEY"):
         from openai import OpenAI
