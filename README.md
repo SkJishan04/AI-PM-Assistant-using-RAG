@@ -295,7 +295,6 @@ flowchart LR
 
 ## 15. Future Improvements
 
-- [ ] Add OCR fallback for scanned PDFs
 - [ ] Add conversational memory across turns
 - [ ] Add automated retrieval evaluation (recall@k)
 - [ ] Deploy live demo to Hugging Face Spaces
