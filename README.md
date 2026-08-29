@@ -229,6 +229,8 @@ python app.py
 
 App runs at `http://127.0.0.1:7860`. Without an API key, the system falls back to displaying raw retrieved context.
 
+> **OCR support:** scanned PDFs (no embedded text layer) require two system binaries in addition to the pip packages: [Tesseract OCR](https://github.com/UB-Mannheim/tesseract/wiki) and [Poppler](https://github.com/oschwartz10612/poppler-windows/releases) (Windows), or `tesseract-ocr` + `poppler-utils` via your package manager (macOS/Linux).
+
 ### Configuration (`config.py`)
 
 | Parameter | Default | Description |
