@@ -134,8 +134,8 @@ flowchart LR
 | Embedding Model | `sentence-transformers/all-MiniLM-L6-v2` |
 | LLM Provider | OpenAI (`gpt-4o-mini`) / Google Gemini (`gemini-1.5-flash`) |
 | Document Parsing | `pypdf`, `python-docx` |
+| OCR (scanned PDFs) | `pytesseract`, `pdf2image` (requires Tesseract + Poppler) |
 | Language | Python 3.10+ |
-| Containerization | Docker |
 
 ---
 
