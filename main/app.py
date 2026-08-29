@@ -16,13 +16,17 @@ with gr.Blocks() as demo:
     index_status = gr.Textbox(label="Index status")
     clear_button = gr.Button("Clear index")
 
+    chat_history = gr.State([])
+
     question = gr.Textbox(label="Question", placeholder="What risks are mentioned in the PRD?")
     answer = gr.Textbox(label="Answer", lines=12)
     ask_button = gr.Button("Ask")
+    clear_conversation_button = gr.Button("Clear conversation")
 
     index_button.click(index_documents, inputs=files, outputs=index_status)
     clear_button.click(clear_collection, inputs=None, outputs=index_status)
-    ask_button.click(answer_question, inputs=question, outputs=answer)
+    ask_button.click(answer_question, inputs=[question, chat_history], outputs=[answer, chat_history])
+    clear_conversation_button.click(lambda: ([], ""), inputs=None, outputs=[chat_history, answer])
 
 if __name__ == "__main__":
     demo.launch()
