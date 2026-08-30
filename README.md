@@ -62,6 +62,7 @@ Rather than fine-tuning a model (expensive, static) or relying on an LLM's param
 - 🔍 **Semantic search** over uploaded documents using vector embeddings
 - 📄 **Multi-format ingestion** — TXT, MD, CSV, PDF, DOCX
 - 🔎 **OCR fallback for scanned PDFs** — automatically extracts text via Tesseract when a PDF has no embedded text layer
+- 💬 **Conversational memory** — follow-up questions (e.g. "why is it blocked?") are understood in context of the last few turns
 - 🤖 **Grounded LLM answers** with explicit source-chunk attribution
 - 🧩 **Modular pipeline** — swap any stage independently (embedding model, LLM provider, vector store)
 - 🧹 **Index management** — clear/reset the vector store from the UI
