@@ -182,6 +182,14 @@ AI-PM-Assistant-using-RAG/
 > **Question:** *"What is the budget for this project?"*
 > **Answer:** "Not found in the provided context."
 
+**Follow-up question example (conversational memory):**
+
+> **Question 1:** *"Who is the assignee for TASK-104?"*
+> **Answer:** "Sam"
+>
+> **Question 2 (follow-up):** *"Why is it blocked?"*
+> **Answer:** "TASK-104 is blocked because the infrastructure team needs to provision a new queue."
+
 <!-- 📸 Placeholder: UI screenshot showing question + answer + sources -->
 <!-- assets/ui_demo.png -->
 
