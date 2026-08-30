@@ -291,7 +291,6 @@ flowchart LR
 ## 14. Limitations
 
 - No re-ranking step (relies solely on embedding similarity)
-- Single-turn Q&A — no conversational memory across questions
 - No automated evaluation suite (recall@k not yet tracked)
 
 ---
