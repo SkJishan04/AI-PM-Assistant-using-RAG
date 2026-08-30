@@ -297,7 +297,6 @@ flowchart LR
 
 ## 15. Future Improvements
 
-- [ ] Add conversational memory across turns
 - [ ] Add automated retrieval evaluation (recall@k)
 - [ ] Deploy live demo to Hugging Face Spaces
 - [ ] Add cross-encoder re-ranking for higher-precision retrieval
