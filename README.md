@@ -273,7 +273,7 @@ A ready-made demo validates the full pipeline end to end:
 
 Covers: fact retrieval, summarization, multi-fact reasoning, and hallucination/grounding checks — see [Results & Evaluation](#9-results--evaluation).
 
-> Automated unit tests are not yet implemented — see [Future Improvements](#15-future-improvements).
+For automated, repeatable retrieval scoring instead of manual comparison, run `main/evaluate.py` — see [Results & Evaluation](#9-results--evaluation) for details.
 
 ---
 
