@@ -211,6 +211,18 @@ Evaluated using a 14-question test set spanning four categories:
 2. Hallucination — mitigated via explicit "answer only from context" prompt
 3. Silent failure on out-of-scope questions — verified correct "not found" responses
 
+### Automated Retrieval Evaluation (Recall@K)
+
+`main/evaluate.py` runs a labeled 9-question set against the retriever and checks whether an expected keyword appears in the top-`K` retrieved chunks, isolating retrieval quality from generation quality:
+
+```bash
+cd main
+python evaluate.py
+```
+
+**Result:** `Recall@4: XX/9 = XX%` <!-- TODO: replace with real output after running evaluate.py -->
+
+
 ---
 
 ## 10. Setup & Installation
