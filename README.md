@@ -205,6 +205,7 @@ Evaluated using a 14-question test set spanning four categories:
 | Summarization | Synthesis across a section | ✅ Passed |
 | Multi-fact reasoning | Connecting facts across sections | ✅ Passed |
 | Grounding checks (no answer in doc) | Hallucination resistance | ✅ 100% correct abstention |
+| Automated retrieval (recall@4) | Quantitative retrieval accuracy | ✅ 9/9 = 100% |
 
 **Failure modes explicitly tested:**
 1. Retrieval failure — mitigated via chunk overlap + `TOP_K` tuning
